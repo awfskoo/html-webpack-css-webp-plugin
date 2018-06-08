@@ -88,7 +88,7 @@ HtmlWebpackCssWebpPlugin.prototype.checkSupportWebp = function(
 };
 
 HtmlWebpackCssWebpPlugin.prototype.handleCss = function(stats) {
-  handleCss(stats.compilation.outputOptions.path);
+  handleCss(stats.compilation.outputOptions.path, this.options.postfix);
 };
 
 function istype(o, type) {

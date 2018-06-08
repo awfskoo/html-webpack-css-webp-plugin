@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function handleCss(dir) {
+function handleCss(dir, postfix) {
   const files = fs.readdirSync(dir);
   files.forEach(function(file, index) {
     const filePath = `${dir}/${file}`;
@@ -14,7 +14,7 @@ function handleCss(dir) {
         const arr = ['png', 'jpg'];
         arr.map(el => {
           const reg = new RegExp(`\\.${el}`, 'g');
-          result = result.replace(reg, `.${el}?${this.options.postfix}`);
+          result = result.replace(reg, `.${el}?${postfix}`);
         });
 
         fs.writeFileSync(path.join(dir, file.replace(/\.css/, '.webp.css')), result, 'utf8');
