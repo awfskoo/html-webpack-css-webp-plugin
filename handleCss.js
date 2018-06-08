@@ -3,7 +3,6 @@ const path = require('path');
 
 function handleCss(dir) {
   const files = fs.readdirSync(dir);
-  console.log(files)
   files.forEach(function(file, index) {
     const filePath = `${dir}/${file}`;
     const info = fs.statSync(filePath);
