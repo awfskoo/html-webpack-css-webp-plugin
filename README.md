@@ -1,5 +1,19 @@
 ## 让你的CSS中的图片也能动态支持Webp
 目前并非所有浏览器都能支持Webp图片，如果图片在HTML中，可以通过JS去进行判断，但是CSS中的图片无法通过JS去判断，通过此插件，可以自动生成Webp图片版的CSS，并且自动将是否支持Webp的判断语法插入到对应的HTML中
+``` html
+<!-- Before -->
+<link rel="stylesheet" href="xxx.css">
+
+<!-- After -->
+<script type="text/javascript">
+  var isSupportWebp = !![].map && 0 == document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp");
+  oHead = document.querySelector("head");
+  oStyle = document.createElement("link");
+  oStyle.rel = "stylesheet";
+  oStyle.href = isSupportWebp ? "xxx.webp.css" : "xxx.css";
+  oHead.appendChild(oStyle)
+</script>
+```
 
 ## 使用前置条件
 webpack + html-webpack-plugin + extract-text-webpack-plugin
