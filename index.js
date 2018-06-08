@@ -79,7 +79,7 @@ HtmlWebpackCssWebpPlugin.prototype.checkSupportWebp = function(
           `
         });
 
-        // 移除link标签
+        // 移除css assets
         htmlPluginData[position].splice(i, 1);
       }
     }
