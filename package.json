@@ -1,0 +1,23 @@
+{
+  "name": "html-webpack-css-webp-plugin",
+  "version": "1.0.0",
+  "description": "让你的CSS中的图片也能动态支持Webp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontendnote/html-webpack-css-webp-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "webp"
+  ],
+  "author": "zhoucheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontendnote/html-webpack-css-webp-plugin/issues"
+  },
+  "homepage": "https://github.com/frontendnote/html-webpack-css-webp-plugin#readme"
+}
