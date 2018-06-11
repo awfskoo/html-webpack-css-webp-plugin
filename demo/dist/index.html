@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Webpack App</title>
+  <script type="text/javascript">
+            var isSupportWebp = !![].map && document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
+  
+            var oHead = document.querySelector('head');
+            var oStyle = document.createElement('link');
+            oStyle.rel = "stylesheet";
+            
+            if (isSupportWebp) {
+              oStyle.href = 'main.webp.css';
+            } else {
+              oStyle.href = 'main.css';
+            }
+            oHead.appendChild(oStyle)
+          </script></head>
+  <body>
+  <script type="text/javascript" src="bundle.js"></script></body>
+</html>

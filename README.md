@@ -39,3 +39,8 @@ module.exports = {
 1. 将webpack生成的所有css文件复制一份，命名为xxx.webp.css
 2. 将xxx.webp.css中的图片全部加上postfix
 3. 基于html-webpack-plugin，移除css assets，并添加一段JS，JS中会判断是否支持webp，如果支持则加载xxx.webp.css，如果不支持，则加载xxx.css
+
+ChangeLog
+
+#### 1.0.4
+1.忽略第三方图片资源
