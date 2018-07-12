@@ -13,7 +13,6 @@ function handleCss(dir, publicPath, postfix) {
   } else {
     convertPublicPath = '';
   }
-  console.log(convertPublicPath)
 
   const files = fs.readdirSync(dir);
   files.forEach(function(file) {
@@ -22,20 +21,28 @@ function handleCss(dir, publicPath, postfix) {
     if (info.isDirectory()) {
       handleCss(filePath);
     } else {
+      if (!filePath.match(/dapaifa-entry/)) {
+        return;
+      }
       if (file.match(/\.css$/) && !file.match(/\.webp\.css$/)) {
         let result = fs.readFileSync(filePath, 'utf-8');
-        const arr = ['png', 'jpg'];
-        arr.map(el => {
+        const exts = ['png', 'jpg'];
+        // arr.map(el => {
           
-          // 只匹配webpack配置中的publicpath，第三方的图片资源不做处理
-          const reg = new RegExp(`${convertPublicPath}([\\s\\S]*?)\\.${el}`, 'g');
-          result.match(reg) && result.match(reg).map(url => {
+          
+        // });
+        // 只匹配webpack配置中的publicpath，第三方的图片资源不做处理
+        const reg = new RegExp(`${convertPublicPath}([\\s\\S]*?)\\.(${exts.join('|')})`, 'g');
+
+        if (result.match(reg)) {
+          const urls = Array.from(new Set(result.match(reg)));
+          urls.map(url => {
             if (convertPublicPath || !url.match(/\/\//g)){
-              result = result.replace(url, `${url}?${postfix}`);
+              const urlReg = new RegExp(`${url}`, 'g');
+              result = result.replace(urlReg, `${url}?${postfix}`);
             }
           })
-        });
-
+        }
         fs.writeFileSync(path.join(dir, file.replace(/\.css/, '.webp.css')), result, 'utf8');
       }
     }
