@@ -21,16 +21,9 @@ function handleCss(dir, publicPath, postfix) {
     if (info.isDirectory()) {
       handleCss(filePath);
     } else {
-      if (!filePath.match(/dapaifa-entry/)) {
-        return;
-      }
       if (file.match(/\.css$/) && !file.match(/\.webp\.css$/)) {
         let result = fs.readFileSync(filePath, 'utf-8');
         const exts = ['png', 'jpg'];
-        // arr.map(el => {
-          
-          
-        // });
         // 只匹配webpack配置中的publicpath，第三方的图片资源不做处理
         const reg = new RegExp(`${convertPublicPath}([\\s\\S]*?)\\.(${exts.join('|')})`, 'g');
 
