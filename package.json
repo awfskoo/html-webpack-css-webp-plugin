@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-css-webp-plugin",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "让你的CSS中的图片也能动态支持Webp",
   "main": "index.js",
   "scripts": {
