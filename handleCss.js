@@ -23,14 +23,15 @@ function handleCss(dir, publicPath, postfix) {
     } else {
       if (file.match(/\.css$/) && !file.match(/\.webp\.css$/)) {
         let result = fs.readFileSync(filePath, 'utf-8');
-        const exts = ['png', 'jpg'];
+        const exts = ['png', 'jpg', 'gif'];
         // 只匹配webpack配置中的publicpath，第三方的图片资源不做处理
         const reg = new RegExp(`${convertPublicPath}([\\s\\S]*?)\\.(${exts.join('|')})`, 'g');
 
         if (result.match(reg)) {
           const urls = Array.from(new Set(result.match(reg)));
           urls.map(url => {
-            if (convertPublicPath || !url.match(/\/\//g)){
+            // 不处理gif，ios上有bug，不播放
+            if ((convertPublicPath || !url.match(/\/\//g)) && !url.match(/gif$/g)){
               const urlReg = new RegExp(`${url}`, 'g');
               result = result.replace(urlReg, `${url}?${postfix}`);
             }
