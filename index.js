@@ -16,7 +16,11 @@ HtmlWebpackCssWebpPlugin.prototype.apply = function(compiler) {
     });
 
     compiler.hooks.done.tap('HtmlWebpackCssWebpPluginHandleCss', function(stats) {
-      self.handleCss.apply(self);
+      try {
+        self.handleCss.apply(self);
+      } catch (error) {
+        
+      }
     });
   } else {
     compiler.plugin('compilation', compilation => {
@@ -27,7 +31,11 @@ HtmlWebpackCssWebpPlugin.prototype.apply = function(compiler) {
     });
 
     compiler.plugin('done', (stats) => {
-      self.handleCss(stats);
+      try {
+        self.handleCss(stats);
+      } catch (error) {
+        
+      }
     });
   }
 };
