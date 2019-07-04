@@ -65,7 +65,7 @@ HtmlWebpackCssWebpPlugin.prototype.checkSupportWebp = function(
 
       if (htmlPluginData[position][i].attributes.rel === 'stylesheet') {
         // 添加webp支持判断代码
-        htmlPluginData.head.push({
+        htmlPluginData[position][i] = {
           tagName: 'script',
           closeTag: true,
           attributes: {
@@ -85,10 +85,7 @@ HtmlWebpackCssWebpPlugin.prototype.checkSupportWebp = function(
             }
             oHead.appendChild(oStyle)
           `
-        });
-
-        // 移除css assets
-        htmlPluginData[position].splice(i, 1);
+        };
       }
     }
   });
